@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:lixue="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.iapppay.lixue.carouselfigureplayerlib.PictureViewPlayer
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/viewPager"
+        lixue:indicator = "@drawable/selector_radio_play_indicator"
+        >
+    </com.iapppay.lixue.carouselfigureplayerlib.PictureViewPlayer>
+
+</FrameLayout>

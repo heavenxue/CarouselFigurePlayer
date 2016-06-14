@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CarouselFigureView">
+        <attr name="indicator" format="reference" />
+        <attr name="isAutoPlay" format="boolean" />
+        <attr name="isInfiniteLoop" format="boolean" />
+        <attr name="isNeedIndicationPoint" format="boolean" />
+        <attr name="pointLeft_Right_Margin" format="dimension" />
+        <attr name="pointBottomMargin" format="dimension" />
+        <attr name="playIntervalTime" format="integer" />
+        <attr name="pointBackground" format="reference" />
+        <attr name="imgPlaceholderResource" format="reference" />
+
+    </declare-styleable>
+</resources>
