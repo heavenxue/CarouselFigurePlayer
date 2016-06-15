@@ -23,9 +23,9 @@ public class SwingFragment extends Fragment implements FragmentListPagerAdapter.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.picture_player, null);
         pictureViewPlayer = (PictureViewPlayer) view.findViewById(R.id.viewPager);
-
         pictureViewPlayer.getViewPlayer().setAdapter(new PicturePagerAdapter(getChildFragmentManager(), Constants.IMAGES));
         pictureViewPlayer.getViewPlayer().setViewPlayMode(PlayMode.SWING);
+        pictureViewPlayer.getViewPlayer().setSwitchSpace(3000);
         pictureViewPlayer.getViewPlayer().setPageTransformer(true, new DepthPageTransformer());
         return view;
     }

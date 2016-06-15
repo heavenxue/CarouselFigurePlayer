@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 public class PictureViewPlayer extends FrameLayout {
     private CarouselFigurePlayer viewPlayer;
     private ViewPlayIndicator pointViewPlayIndicator;
+    private int lastPosition;
 //    private int indicatorDrawableResId;//指针图标
     private int indicatorDrawableMagin = 8;//指针图标外间距，默认为8
 
@@ -50,14 +51,10 @@ public class PictureViewPlayer extends FrameLayout {
     private void init(){
         viewPlayer = new CarouselFigurePlayer(getContext());
         viewPlayer.setId(viewPlayer.hashCode());
-        viewPlayer.setSwitchSpace(5000);
         addView(viewPlayer);
 
         pointViewPlayIndicator = new ViewPlayIndicator(getContext());
         pointViewPlayIndicator.setId(pointViewPlayIndicator.hashCode());
-        pointViewPlayIndicator.setCount(5);
-        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
-        pointViewPlayIndicator.setIndicatorDrawableMargin(8);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
         addView(pointViewPlayIndicator, layoutParams);
@@ -79,7 +76,8 @@ public class PictureViewPlayer extends FrameLayout {
                 if(viewPlayer.getAdapter() != null){
                     pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
                     pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
-                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+                    pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
+//                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
                 }
             }
         });

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
  * Created by Administrator on 2016/6/14.
  */
 public class ViewPlayIndicator extends LinearLayout{
+    private final static String TAG = "ViewPlayIndicator";
     private int lastCheckedPosition;//上次选中的图标的位置
     private Drawable indicatorDrawable;//指示器图片
     private int indicatorDrawableMargin;//外边距
@@ -55,12 +57,12 @@ public class ViewPlayIndicator extends LinearLayout{
                     params.setMargins(indicatorDrawableMargin, indicatorDrawableMargin, indicatorDrawableMargin, indicatorDrawableMargin);//设置指示器内图标的外边距
                     image.setLayoutParams(params);
                     image.setImageDrawable(indicatorDrawable);
-//                    image.setImageResource(indicatorDrawableResdId);
                     addView(image);
                 }
                 setVisibility(View.VISIBLE);
+            }else{
+                setVisibility(View.GONE);
             }
-            setVisibility(View.GONE);
         }
     }
 
@@ -91,9 +93,20 @@ public class ViewPlayIndicator extends LinearLayout{
      */
     public void selected(int selectedItemPosition) {
         if(getChildCount() > 0 && selectedItemPosition < getChildCount()){
-            (getChildAt(lastCheckedPosition)).setSelected(false);//先将上一个取消
-            (getChildAt(selectedItemPosition)).setSelected(true);//再将当前的选中
-            lastCheckedPosition = selectedItemPosition;//记录本次选中的
+            Log.i(TAG,"selectedItemPosition:" + selectedItemPosition + "，总数："+getChildCount());
+            Log.i(TAG,"lastCheckedPosition :" + lastCheckedPosition);
+            getChildAt(lastCheckedPosition).setSelected(false);
+            getChildAt(selectedItemPosition).setSelected(true);
+//            for (int w = 0; w < getChildCount(); w ++){
+//                if (w == selectedItemPosition){
+//                    Log.i(TAG,"此时选中：第" + selectedItemPosition +"张照片");
+//                    (getChildAt(selectedItemPosition)).setSelected(true);//再将当前的选中
+//                }else{
+//                    Log.i(TAG,"第" + w+"张照片未选中");
+//                    (getChildAt(w)).setSelected(false);//先将上一个取消
+//                }
+//            }
+            lastCheckedPosition = selectedItemPosition;//记录本次选中的+
         }
     }
 }

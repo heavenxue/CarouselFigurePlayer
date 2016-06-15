@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iapppay.lixue.carouselfigureplayerlib.PictureViewPlayer;
+import com.iapppay.lixue.carouselfigureplayerlib.PlayMode;
 
 /**
  * Created by Administrator on 2016/6/14.
@@ -19,6 +20,8 @@ public class CircleFragment extends Fragment implements FragmentListPagerAdapter
         View view = inflater.inflate(R.layout.picture_player, null);
         pictureViewPlayer = (PictureViewPlayer) view.findViewById(R.id.viewPager);
         pictureViewPlayer.getViewPlayer().setAdapter(new PicturePagerAdapter(getChildFragmentManager(), Constants.IMAGES));
+        pictureViewPlayer.getViewPlayer().setViewPlayMode(PlayMode.CIRCLE);
+        pictureViewPlayer.getViewPlayer().setSwitchSpace(3000);
         return view;
     }
 
