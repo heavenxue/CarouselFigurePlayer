@@ -22,6 +22,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initData(){
-        viewpager.setAdapter(new FragmentListPagerAdapter(getSupportFragmentManager(),new SwingFragment()));
+        viewpager.setAdapter(new FragmentListPagerAdapter(getSupportFragmentManager(),new SwingFragment(),new CircleFragment()));
     }
 }

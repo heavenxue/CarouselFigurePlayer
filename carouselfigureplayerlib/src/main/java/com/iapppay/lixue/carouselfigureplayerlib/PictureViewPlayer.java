@@ -59,17 +59,6 @@ public class PictureViewPlayer extends FrameLayout {
         layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
         addView(pointViewPlayIndicator, layoutParams);
 
-        viewPlayer.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageSelected(int arg0) {
-                pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem(arg0));
-            }
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {}
-            @Override
-            public void onPageScrollStateChanged(int arg0) {}
-        });
-
         viewPlayer.setOnSetAdapterListener(new CarouselFigurePlayer.OnSetAdapterListener() {
             @Override
             public void onSetAdapter() {
@@ -77,8 +66,25 @@ public class PictureViewPlayer extends FrameLayout {
                     pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
                     pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
                     pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
-//                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
                 }
+            }
+        });
+
+        viewPlayer.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem(position));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }

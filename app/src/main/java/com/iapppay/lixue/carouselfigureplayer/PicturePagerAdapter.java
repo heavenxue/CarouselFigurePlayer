@@ -37,7 +37,7 @@ public class PicturePagerAdapter extends PlayFragmentStatePagerAdatper {
 
     @Override
     public int getRealCount() {
-        return pictures != null?pictures.size():0;
+        return pictures != null ? pictures.size() : 0 ;
     }
 
     @Override

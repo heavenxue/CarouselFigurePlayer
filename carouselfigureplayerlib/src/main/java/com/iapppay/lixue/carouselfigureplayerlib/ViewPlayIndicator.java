@@ -1,11 +1,8 @@
 package com.iapppay.lixue.carouselfigureplayerlib;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,16 +26,6 @@ public class ViewPlayIndicator extends LinearLayout{
     public ViewPlayIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setGravity(Gravity.CENTER);
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public ViewPlayIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ViewPlayIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     /**
@@ -93,20 +80,19 @@ public class ViewPlayIndicator extends LinearLayout{
      */
     public void selected(int selectedItemPosition) {
         if(getChildCount() > 0 && selectedItemPosition < getChildCount()){
-            Log.i(TAG,"selectedItemPosition:" + selectedItemPosition + "，总数："+getChildCount());
-            Log.i(TAG,"lastCheckedPosition :" + lastCheckedPosition);
-            getChildAt(lastCheckedPosition).setSelected(false);
-            getChildAt(selectedItemPosition).setSelected(true);
-//            for (int w = 0; w < getChildCount(); w ++){
-//                if (w == selectedItemPosition){
-//                    Log.i(TAG,"此时选中：第" + selectedItemPosition +"张照片");
-//                    (getChildAt(selectedItemPosition)).setSelected(true);//再将当前的选中
-//                }else{
-//                    Log.i(TAG,"第" + w+"张照片未选中");
-//                    (getChildAt(w)).setSelected(false);//先将上一个取消
-//                }
-//            }
-            lastCheckedPosition = selectedItemPosition;//记录本次选中的+
+            // 取余后的索引，得到新的page的索引
+//            int newPositon = selectedItemPosition % getChildCount();
+            // 把上一个点设置为被选中
+            (getChildAt(lastCheckedPosition)).setSelected(false);
+            // 根据索引设置那个点被选中
+            (getChildAt(selectedItemPosition)).setSelected(true);
+            // 新索引赋值给上一个索引的位置
+            lastCheckedPosition = selectedItemPosition;
+//            (getChildAt(lastCheckedPosition)).setSelected(false);
+//            (getChildAt(selectedItemPosition)).setSelected(true);
+//            Log.i(TAG,"selectedItemPosition:" + selectedItemPosition + "，总数："+getChildCount());
+//            Log.i(TAG,"lastCheckedPosition :" + lastCheckedPosition);
+//            lastCheckedPosition = selectedItemPosition;//记录本次选中的+
         }
     }
 }
