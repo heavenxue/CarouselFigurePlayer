@@ -11,45 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         lixue:indicator = "@drawable/selector_radio_play_indicator"
+        lixue:isNeedIndicationPoint = "true"
         >
     </com.iapppay.lixue.carouselfigureplayerlib.PictureViewPlayer>
-    <!--<LinearLayout-->
-        <!--android:id="@+id/indicatorImg"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@id/myViewPager"-->
-        <!--android:layout_alignBottom="@id/myViewPager"-->
-        <!--android:gravity="bottom|center_horizontal"-->
-        <!--&gt;-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/selector_radio_play_indicator"-->
-            <!--android:layout_margin="4dp"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/selector_radio_play_indicator"-->
-            <!--android:layout_margin="4dp"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/selector_radio_play_indicator"-->
-            <!--android:layout_margin="4dp"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/selector_radio_play_indicator"-->
-            <!--android:layout_margin="4dp"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/selector_radio_play_indicator"-->
-            <!--android:layout_margin="4dp"-->
-            <!--/>-->
-    <!--</LinearLayout>-->
 </RelativeLayout>

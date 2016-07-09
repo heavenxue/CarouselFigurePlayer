@@ -7,8 +7,6 @@ import com.iapppay.lixue.carouselfigureplayerlib.PictureViewPlayer;
 
 public class MyActivity extends AppCompatActivity {
     private PictureViewPlayer viewPager;
-//    private LinearLayout indicatorImg;
-    private int lastPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +18,11 @@ public class MyActivity extends AppCompatActivity {
 
     private void initLayout(){
         viewPager = (PictureViewPlayer) findViewById(R.id.myViewPager);
-//        indicatorImg = (LinearLayout) findViewById(R.id.indicatorImg);
     }
 
     private void ininData(){
         viewPager.getViewPlayer().setAdapter(new PicturePagerAdapter(getSupportFragmentManager(),Constants.IMAGES));
         viewPager.getViewPlayer().setSwitchSpace(3000);
-        viewPager.getViewPlayIndicator().setIndicatorDrawableId(R.drawable.selector_radio_play_indicator);
     }
 
     @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.iapppay.lixue.carouselfigureplayer"
           xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- Include following permission if you load images from Internet -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Include following permission if you want to cache images on SD card -->
@@ -14,11 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".MyActivity">
             <intent-filter>
@@ -26,6 +29,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".Main2Activity">
+
         </activity>
     </application>
 

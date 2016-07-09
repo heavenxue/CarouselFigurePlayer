@@ -21,11 +21,7 @@ public class PictureViewPlayer extends FrameLayout {
 
     //-------------－－自定义属性－－－－－－－－－－－－
     private Drawable indicatorDrawable ;
-    private boolean isAutoPlay = true; //是否自动切换
-    private boolean isInfiniteLoop = true; //是否无限循环
     private boolean isNeedIndicationPoint = true;//是否需要指示点
-    private float pointLeft_Right_Margin = 13;//指示点的间距，单位是px,在布局文件中设置单位最好为dp
-    private float pointBottomMargin = 5;//指示点上移的距离,单位是px，在布局文件中设置单位最好为dp
 
     public PictureViewPlayer(Context context) {
         super(context);
@@ -34,13 +30,13 @@ public class PictureViewPlayer extends FrameLayout {
 
     public PictureViewPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
-//        parseCustomAttributes(context,attrs,0);
+        parseCustomAttributes(context,attrs,0);
         init();
     }
 
     public PictureViewPlayer(Context context,AttributeSet attributeSet,int def){
         super(context,attributeSet,def);
-//        parseCustomAttributes(context,attributeSet,def);
+        parseCustomAttributes(context,attributeSet,def);
         init();
     }
 
@@ -52,21 +48,27 @@ public class PictureViewPlayer extends FrameLayout {
         viewPlayer.setId(viewPlayer.hashCode());
         addView(viewPlayer);
 
-        pointViewPlayIndicator = new ViewPlayIndicator(getContext());
-        pointViewPlayIndicator.setId(pointViewPlayIndicator.hashCode());
-        pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        addView(pointViewPlayIndicator, layoutParams);
+        if (isNeedIndicationPoint){
+            pointViewPlayIndicator = new ViewPlayIndicator(getContext());
+            pointViewPlayIndicator.setId(pointViewPlayIndicator.hashCode());
+
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+            addView(pointViewPlayIndicator, layoutParams);
+        }
+
 
         viewPlayer.setOnSetAdapterListener(new CarouselFigurePlayer.OnSetAdapterListener() {
             @Override
             public void onSetAdapter() {
                 if(viewPlayer.getAdapter() != null){
-                    pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
-                    pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
-
-                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+                    if (isNeedIndicationPoint){
+                        pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
+                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
+//                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
+                        pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
+                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+                    }
                 }
             }
         });
@@ -93,18 +95,22 @@ public class PictureViewPlayer extends FrameLayout {
      * 解析自定义属性
      */
     private void parseCustomAttributes(Context context, AttributeSet attrs,int defStyleAttr) {
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, com.iapppay.lixue.carouselfigureplayerlib.R.styleable.CarouselFigureView, defStyleAttr, 0);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CarouselFigureView, defStyleAttr, 0);
         if (typedArray != null){
             int a = typedArray.getIndexCount();
             for (int i = 0;i<a;i++){
                 int attr = typedArray.getIndex(i);
-                if (attr == com.iapppay.lixue.carouselfigureplayerlib.R.styleable.CarouselFigureView_isAutoPlay) {
-                    isAutoPlay = typedArray.getBoolean(attr, true);
-                }else if(attr == com.iapppay.lixue.carouselfigureplayerlib.R.styleable.CarouselFigureView_indicator){
-                    indicatorDrawableResId = typedArray.getInt(attr,0);
-                    if (indicatorDrawableResId == 0){
+                if(attr == R.styleable.CarouselFigureView_indicator){
+                    indicatorDrawableResId = typedArray.getResourceId(attr,0);
+                    indicatorDrawable = typedArray.getDrawable(attr);
+                    if (indicatorDrawable == null){
                         Log.i("PictureViewPlayer","indicatorDrawable属性没有设置");
+                    }else{
+//                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
+                        Log.i("PictureViewPlayer","indicatorDrawable属性已经设置");
                     }
+                }else if(attr == R.styleable.CarouselFigureView_isInfiniteLoop){
+                    isNeedIndicationPoint = typedArray.getBoolean(attr,true);
                 }
             }
             typedArray.recycle();

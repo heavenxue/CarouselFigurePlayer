@@ -40,13 +40,16 @@ public class CarouselFigurePlayer extends ViewPager {
             throw new IllegalArgumentException("适配器必须继实现PagerPlayAdapterInterface接口");
         }
         super.setAdapter(adapter);
+
         if(playController == null){
             playController = new PlayController(this);
         }
+
         playController.setPlayMode(viewPlayMode);
         ((PlayAdapterInterface) adapter).setViewPlayMode(viewPlayMode);
         adapter.notifyDataSetChanged();
         playController.reset();
+
         if(onSetAdapterListener != null){
             onSetAdapterListener.onSetAdapter();
         }
