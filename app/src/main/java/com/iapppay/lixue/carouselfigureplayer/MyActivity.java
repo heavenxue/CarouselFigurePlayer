@@ -18,6 +18,7 @@ public class MyActivity extends AppCompatActivity {
 
     private void initLayout(){
         viewPager = (PictureViewPlayer) findViewById(R.id.myViewPager);
+
     }
 
     private void ininData(){

@@ -64,8 +64,8 @@ public class PictureViewPlayer extends FrameLayout {
                 if(viewPlayer.getAdapter() != null){
                     if (isNeedIndicationPoint){
                         pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
-//                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
-                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
+                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
+//                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
                         pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
 //                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
                     }

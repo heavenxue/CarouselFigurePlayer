@@ -39,7 +39,7 @@ public class ViewPlayIndicator extends LinearLayout{
         if (count != this.count){
             this.count = count;
             removeAllViews();
-            if (count > 1 && indicatorDrawableId != 0){//有图片的话
+            if (count > 1 && indicatorDrawable != null){//有图片的话
                 //然后初始化所有图标并放进图标的布局中
                 for (int i = 0;i < count;i ++){
                     ImageView image = new ImageView(getContext());
@@ -47,8 +47,8 @@ public class ViewPlayIndicator extends LinearLayout{
                     params.setMargins(indicatorDrawableMargin, indicatorDrawableMargin, indicatorDrawableMargin, indicatorDrawableMargin);//设置指示器内图标的外边距
                     image.setLayoutParams(params);
 //                    Log.d(TAG,"--------setImageResource-------------");
-                    image.setImageResource(indicatorDrawableId);
-//                      image.setImageDrawable(indicatorDrawable);
+//                    image.setImageResource(indicatorDrawableId);
+                      image.setImageDrawable(indicatorDrawable);
                       Log.d(TAG,"--------setImageDrawable-------------");
                     addView(image);
                 }
