@@ -64,10 +64,10 @@ public class PictureViewPlayer extends FrameLayout {
                 if(viewPlayer.getAdapter() != null){
                     if (isNeedIndicationPoint){
                         pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
-                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
-//                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
+//                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
+                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
                         pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
-                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+//                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
                     }
                 }
             }
@@ -109,7 +109,7 @@ public class PictureViewPlayer extends FrameLayout {
 //                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
                         Log.i("PictureViewPlayer","indicatorDrawable属性已经设置");
                     }
-                }else if(attr == R.styleable.CarouselFigureView_isInfiniteLoop){
+                }else if(attr == R.styleable.CarouselFigureView_isNeedIndicationPoint){
                     isNeedIndicationPoint = typedArray.getBoolean(attr,true);
                 }
             }

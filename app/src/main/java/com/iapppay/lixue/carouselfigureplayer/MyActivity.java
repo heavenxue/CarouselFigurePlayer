@@ -22,7 +22,7 @@ public class MyActivity extends AppCompatActivity {
 
     private void ininData(){
         viewPager.getViewPlayer().setAdapter(new PicturePagerAdapter(getSupportFragmentManager(),Constants.IMAGES));
-        viewPager.getViewPlayer().setSwitchSpace(3000);
+        viewPager.getViewPlayer().setSwitchSpace(5000);
     }
 
     @Override
