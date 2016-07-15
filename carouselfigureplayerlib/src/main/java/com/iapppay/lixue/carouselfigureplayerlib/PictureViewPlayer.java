@@ -65,9 +65,9 @@ public class PictureViewPlayer extends FrameLayout {
                     if (isNeedIndicationPoint){
                         pointViewPlayIndicator.setIndicatorDrawableMargin(indicatorDrawableMagin);
 //                        pointViewPlayIndicator.setIndicatorDrawable(indicatorDrawable);
-                    pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
+                        pointViewPlayIndicator.setIndicatorDrawableId(indicatorDrawableResId);
                         pointViewPlayIndicator.setCount(viewPlayer.getRealCount());
-                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
+//                        pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem());
                     }
                 }
             }
@@ -81,7 +81,10 @@ public class PictureViewPlayer extends FrameLayout {
 
             @Override
             public void onPageSelected(int position) {
-                pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem(position));
+                if (pointViewPlayIndicator.getIsLoaded()){
+                    pointViewPlayIndicator.selected(viewPlayer.getRealCurrentItem(position));
+                }
+
             }
 
             @Override
@@ -132,4 +135,5 @@ public class PictureViewPlayer extends FrameLayout {
     public void setIndicatorDrawableMagin(int indicatorDrawableMagin) {
         this.indicatorDrawableMagin = indicatorDrawableMagin;
     }
+
 }

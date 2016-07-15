@@ -20,7 +20,7 @@ public class ViewPlayIndicator extends LinearLayout{
     private Drawable indicatorDrawable;//指示器图片
     private int indicatorDrawableMargin;//外边距
     private int count;
-
+    private boolean isLoaded;//是否全部加载完毕
 
     public ViewPlayIndicator(Context context) {
         this(context, null);
@@ -51,6 +51,9 @@ public class ViewPlayIndicator extends LinearLayout{
 //                      image.setImageDrawable(indicatorDrawable);
                       Log.d(TAG,"--------setImageDrawable-------------");
                     addView(image);
+                    if (i == count -1){
+                        isLoaded = true;
+                    }
                 }
                 setVisibility(View.VISIBLE);
             }else{
@@ -100,13 +103,30 @@ public class ViewPlayIndicator extends LinearLayout{
         Log.d(TAG,"getChildCount:" + getChildCount());
         Log.d(TAG,"selectedItemPosition:" + selectedItemPosition);
         Log.d(TAG,"lastCheckedPosition:" + lastCheckedPosition);
-        if(getChildCount() > 0 && selectedItemPosition < getChildCount()){
-            // 把上一个点设置为被选中
-            (getChildAt(lastCheckedPosition)).setSelected(false);
-            // 根据索引设置那个点被选中
-            (getChildAt(selectedItemPosition)).setSelected(true);
-            // 新索引赋值给上一个索引的位置
-            lastCheckedPosition = selectedItemPosition;
-        }
+//        if(getChildCount() > 0 && selectedItemPosition < getChildCount()){
+            for (int i = 0 ;i < getChildCount();i ++){
+                getChildAt(i).setSelected(false);
+                Log.d(TAG,"各个child的i:" + i);
+                if (i == 0){
+                    getChildAt(i).setSelected(true);
+                    getChildAt(4).setSelected(false);
+                }
+            }
+//            getChildAt(1).setSelected(false);
+//            getChildAt(2).setSelected(false);
+//            getChildAt(3).setSelected(false);
+//            getChildAt(0).setSelected(false);
+//            getChildAt(0).setSelected(true);
+//            // 把上一个点设置为被选中
+//            (getChildAt(lastCheckedPosition)).setSelected(false);
+//            // 根据索引设置那个点被选中
+//            (getChildAt(selectedItemPosition)).setSelected(true);
+//            // 新索引赋值给上一个索引的位置
+//            lastCheckedPosition = selectedItemPosition;
+//        }
+    }
+
+    public boolean getIsLoaded(){
+        return isLoaded;
     }
 }
