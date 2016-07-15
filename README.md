@@ -28,5 +28,5 @@
 * 图片可以摆动轮播  设置`pictureViewPlayer.getViewPlayer().setViewPlayMode(PlayMode.SWING);`
     
 
-文章：
+## 文章：
 [思考--博客](http://www.jianshu.com/p/63671c05fbe8)
