@@ -103,27 +103,13 @@ public class ViewPlayIndicator extends LinearLayout{
         Log.d(TAG,"getChildCount:" + getChildCount());
         Log.d(TAG,"selectedItemPosition:" + selectedItemPosition);
         Log.d(TAG,"lastCheckedPosition:" + lastCheckedPosition);
-//        if(getChildCount() > 0 && selectedItemPosition < getChildCount()){
-            for (int i = 0 ;i < getChildCount();i ++){
-                getChildAt(i).setSelected(false);
-                Log.d(TAG,"各个child的i:" + i);
-                if (i == 0){
-                    getChildAt(i).setSelected(true);
-                    getChildAt(4).setSelected(false);
-                }
-            }
-//            getChildAt(1).setSelected(false);
-//            getChildAt(2).setSelected(false);
-//            getChildAt(3).setSelected(false);
-//            getChildAt(0).setSelected(false);
-//            getChildAt(0).setSelected(true);
-//            // 把上一个点设置为被选中
-//            (getChildAt(lastCheckedPosition)).setSelected(false);
-//            // 根据索引设置那个点被选中
-//            (getChildAt(selectedItemPosition)).setSelected(true);
-//            // 新索引赋值给上一个索引的位置
-//            lastCheckedPosition = selectedItemPosition;
-//        }
+
+        // 把上一个点设置为被选中
+        (getChildAt(lastCheckedPosition)).setSelected(false);
+        // 根据索引设置那个点被选中
+        (getChildAt(selectedItemPosition)).setSelected(true);
+        // 新索引赋值给上一个索引的位置
+        lastCheckedPosition = selectedItemPosition;
     }
 
     public boolean getIsLoaded(){
